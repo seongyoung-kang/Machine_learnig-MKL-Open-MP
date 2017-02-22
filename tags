@@ -1,0 +1,101 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AC_NEURONS	network_definition.h	14;"	d
+AC_WEIGHTS	network_definition.h	15;"	d
+BIAS	network_definition.h	/^enum DATA_T {BIAS, WEIGHT, ERROR, ZS, NEURON};$/;"	e	enum:DATA_T
+BIAS	network_definition.h	17;"	d
+DATA_T	network_definition.h	/^enum DATA_T {BIAS, WEIGHT, ERROR, ZS, NEURON};$/;"	g
+DATA_TEST_A	network_definition.h	32;"	d
+DATA_TEST_Q	network_definition.h	31;"	d
+DATA_TRAIN_A	network_definition.h	30;"	d
+DATA_TRAIN_Q	network_definition.h	29;"	d
+END_TIME	timeutils.h	14;"	d
+EPOCH	network_definition.h	2;"	d
+ERROR	network_definition.h	/^enum DATA_T {BIAS, WEIGHT, ERROR, ZS, NEURON};$/;"	e	enum:DATA_T
+ERROR	network_definition.h	26;"	d
+HIDDEN_SIZE	network_definition.h	8;"	d
+INPUT_SIZE	mnist.h	1;"	d
+LEARNING_RATE	network_definition.h	4;"	d
+MINI_BATCH_SIZE	network_definition.h	3;"	d
+NEURON	network_definition.h	/^enum DATA_T {BIAS, WEIGHT, ERROR, ZS, NEURON};$/;"	e	enum:DATA_T
+NEURON	network_definition.h	22;"	d
+NUM_LAYER	network_definition.h	7;"	d
+OUTPUT_SIZE	mnist.h	2;"	d
+REPORT_F	network_definition.h	5;"	d
+START_TIME	timeutils.h	13;"	d
+TEST_A	mnist.h	10;"	d
+TEST_DATA_NUM	mnist.h	5;"	d
+TEST_Q	mnist.h	9;"	d
+TIMER_ADD	timeutils.h	23;"	d
+TIMER_INIT	timeutils.h	5;"	d
+TOTAL_NEURONS	network_definition.h	11;"	d
+TOTAL_SEC_TIME	timeutils.h	20;"	d
+TOTAL_SEC_UTIME	timeutils.h	21;"	d
+TOTAL_WEIGHTS	network_definition.h	12;"	d
+TRAIN_A	mnist.h	8;"	d
+TRAIN_DATA_NUM	mnist.h	4;"	d
+TRAIN_Q	mnist.h	7;"	d
+WEIGHT	network_definition.h	/^enum DATA_T {BIAS, WEIGHT, ERROR, ZS, NEURON};$/;"	e	enum:DATA_T
+WEIGHT	network_definition.h	18;"	d
+WHILE	network_definition.h	34;"	d
+ZS	network_definition.h	/^enum DATA_T {BIAS, WEIGHT, ERROR, ZS, NEURON};$/;"	e	enum:DATA_T
+ZS	network_definition.h	24;"	d
+ac_neuron	network_definition.h	/^	int *ac_neuron;$/;"	m	struct:network
+ac_weight	network_definition.h	/^	int *ac_weight;$/;"	m	struct:network
+back_pass	machinelearning_function.h	/^void back_pass(struct network *net, int thread1, int thread2, int mode)$/;"	f
+backpropagation	machinelearning_function.h	/^void backpropagation(struct network *net, int thread1, int thread2,int mode)$/;"	f
+best_recog	network_definition.h	/^	int best_recog;$/;"	m	struct:network
+bias	network_definition.h	/^	double *bias;$/;"	m	struct:network
+calloc	network_definition.h	38;"	d
+calloc	network_definition.h	42;"	d
+diff	timeutils.h	/^		struct timeval diff;$/;"	m	struct:timeutils	typeref:struct:timeutils::timeval
+epoch	network_definition.h	/^	int epoch;$/;"	m	struct:network
+error	network_definition.h	/^	double *error;$/;"	m	struct:network
+etime	timeutils.h	/^		struct timeval etime;$/;"	m	struct:timeutils	typeref:struct:timeutils::timeval
+feedforward	machinelearning_function.h	/^void feedforward(struct network *net, int thread, int mode)$/;"	f
+free	network_definition.h	39;"	d
+free	network_definition.h	43;"	d
+init	machinelearning_function.h	/^void init(struct network *net)$/;"	f
+layer_size	network_definition.h	/^	int *layer_size;$/;"	m	struct:network
+layersize	machinelearning_function.h	/^int layersize[NUM_LAYER] = {INPUT_SIZE,HIDDEN_SIZE,OUTPUT_SIZE};$/;"	v
+learning_rate	network_definition.h	/^	double learning_rate;$/;"	m	struct:network
+main	main.c	/^int main(void)$/;"	f
+malloc	network_definition.h	37;"	d
+malloc	network_definition.h	41;"	d
+mini_batch_size	network_definition.h	/^	int mini_batch_size;$/;"	m	struct:network
+mnist_load	mnist.h	/^void mnist_load(struct network * net)$/;"	f
+modes	network_definition.h	/^	int *modes;$/;"	m	struct:network
+network	network_definition.h	/^struct network {$/;"	s
+neuron	network_definition.h	/^	double *neuron;$/;"	m	struct:network
+nr_test_data	network_definition.h	/^	unsigned int nr_test_data;$/;"	m	struct:network
+nr_thread	network_definition.h	/^    int nr_thread;$/;"	m	struct:network
+nr_train_data	network_definition.h	/^	unsigned int nr_train_data;$/;"	m	struct:network
+num_layer	network_definition.h	/^	int num_layer;$/;"	m	struct:network
+predict	machinelearning_function.h	/^int predict(struct network *net)$/;"	f
+randn	machinelearning_function.h	/^double randn(void)$/;"	f
+report_file	network_definition.h	/^	char *report_file;$/;"	m	struct:network
+sigmoid	machinelearning_function.h	/^double sigmoid(double z)$/;"	f
+sigmoid_prime	machinelearning_function.h	/^double sigmoid_prime(double z)$/;"	f
+stime	timeutils.h	/^		struct timeval stime;$/;"	m	struct:timeutils	typeref:struct:timeutils::timeval
+t_back_pass	network_definition.h	/^	struct timeutils t_back_pass;$/;"	m	struct:network	typeref:struct:network::timeutils
+t_backpropagation	network_definition.h	/^	struct timeutils t_backpropagation;$/;"	m	struct:network	typeref:struct:network::timeutils
+t_feedforward	network_definition.h	/^	struct timeutils t_feedforward;$/;"	m	struct:network	typeref:struct:network::timeutils
+test_a	network_definition.h	/^	int *train_a, *test_a;$/;"	m	struct:network
+test_a_name	network_definition.h	/^	char *test_q_name , *test_a_name;$/;"	m	struct:network
+test_q	network_definition.h	/^	double *train_q, *test_q;$/;"	m	struct:network
+test_q_name	network_definition.h	/^	char *test_q_name , *test_a_name;$/;"	m	struct:network
+threads	network_definition.h	/^	int *threads;$/;"	m	struct:network
+timeutils	timeutils.h	/^typedef struct timeutils {$/;"	s
+timeutils	timeutils.h	/^} timeutils;$/;"	t	typeref:struct:timeutils
+total	timeutils.h	/^		struct timeval total;$/;"	m	struct:timeutils	typeref:struct:timeutils::timeval
+train	machinelearning_function.h	/^void train(struct network *net, void *threads, void *modes)$/;"	f
+train_a	network_definition.h	/^	int *train_a, *test_a;$/;"	m	struct:network
+train_a_name	network_definition.h	/^	char *train_q_name, *train_a_name;$/;"	m	struct:network
+train_q	network_definition.h	/^	double *train_q, *test_q;$/;"	m	struct:network
+train_q_name	network_definition.h	/^	char *train_q_name, *train_a_name;$/;"	m	struct:network
+weight	network_definition.h	/^	double *weight;$/;"	m	struct:network
+zs	network_definition.h	/^	double *zs;$/;"	m	struct:network
