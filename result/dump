@@ -1,0 +1,80 @@
+
+=======================REPORT=======================
+epoch : 10
+learning_rate : 3.000000
+recognization rate : 9455/10000
+=======================THREADS======================
+feedforward thread : 100
+back_pass thread1 : 100
+back_pass thread2 : 100
+backpropagation thread1 : 100
+backpropagation thread2 : 100
+========================MODE========================
+feedforward mode (error) : MKL
+back_pass mode : OpenMP
+backpropagation mode : OpenMP
+========================TIME========================
+feedforward : 0.1676 sec
+back_pass : 0.73 sec
+backpropagation : 0.2846 sec
+total : 0.4595 sec
+
+=======================REPORT=======================
+epoch : 20
+learning_rate : 3.000000
+recognization rate : 9542/10000
+=======================THREADS======================
+feedforward thread : 100
+back_pass thread1 : 100
+back_pass thread2 : 100
+backpropagation thread1 : 100
+backpropagation thread2 : 100
+========================MODE========================
+feedforward mode (error) : MKL
+back_pass mode : OpenMP
+backpropagation mode : OpenMP
+========================TIME========================
+feedforward : 0.1683 sec
+back_pass : 0.68 sec
+backpropagation : 0.2870 sec
+total : 0.4621 sec
+
+=======================REPORT=======================
+epoch : 100
+learning_rate : 3.000000
+recognization rate : 9611/10000
+=======================THREADS======================
+feedforward thread : 100
+back_pass thread1 : 100
+back_pass thread2 : 100
+backpropagation thread1 : 100
+backpropagation thread2 : 100
+========================MODE========================
+feedforward mode (error) : MKL
+back_pass mode : OpenMP
+backpropagation mode : OpenMP
+========================TIME========================
+feedforward : 0.1690 sec
+back_pass : 0.71 sec
+backpropagation : 0.2889 sec
+total : 0.4650 sec
+
+=======================REPORT=======================
+epoch : 300
+learning_rate : 3.000000
+recognization rate : 9634/10000
+=======================THREADS======================
+feedforward thread : 100
+back_pass thread1 : 100
+back_pass thread2 : 100
+backpropagation thread1 : 100
+backpropagation thread2 : 100
+========================MODE========================
+feedforward mode (error) : MKL
+back_pass mode : OpenMP
+backpropagation mode : OpenMP
+========================TIME========================
+feedforward : 0.1705 sec
+back_pass : 0.69 sec
+backpropagation : 0.2823 sec
+total : 0.4597 sec

@@ -1,22 +1,32 @@
 //size definition
-#define EPOCH 10
-#define MINI_BATCH_SIZE 1
-#define LEARNING_RATE 3
+#define EPOCH 300
+#define MINI_BATCH_SIZE 100
+#define LEARNING_RATE 0.1
 #define REPORT_F "./result/dump"
 
-#define NUM_LAYER 3
-#define HIDDEN_SIZE 30
+#define MODE_RECORD "./record/mode_record"
 
+#define SELECT_MODE 1
+
+#define NUM_LAYER 3
+#define HIDDEN_SIZE 120
+
+#define MODE_NUM 3
+#define THREAD_MODE_NUM 5
 
 #define TOTAL_NEURONS(net_p)     AC_NEURONS(net_p, net_p->num_layer-1)
 #define TOTAL_WEIGHTS(net_p)     AC_WEIGHTS(net_p, net_p->num_layer-2)
+
+#define MAX_CPU 256
 
 #define AC_NEURONS(net_p, L)       (0 > L ? 0 : net_p->ac_neuron[L])
 #define AC_WEIGHTS(net_p, L)       (0 > L ? 0 : net_p->ac_weight[L])
 
 #define BIAS(net_p, i, j)          (net_p->bias[AC_NEURONS(net_p, i-1) + j])
+//ith layer, jth node to k node weight
 #define WEIGHT(net_p, i, j, k)     (net_p->weight[AC_WEIGHTS(net_p, i-1) \
 									+ j*net_p->layer_size[i+1] + k])
+
 
 // ith layer, jth mini_batch, kth node
 #define NEURON(net_p, i, j, k)      (net_p->neuron[AC_NEURONS(net_p, i-1)*net_p->mini_batch_size \
@@ -70,8 +80,10 @@ struct network {
 	int *ac_weight;
 	int *ac_neuron;
 
-	int *modes;
-	int *threads;
+	int *mode;
+	int *thread;
+
+	int *record_random;
 
 	double learning_rate;
 	int mini_batch_size;
@@ -79,17 +91,10 @@ struct network {
 
 	int best_recog;
 
+	double cost_rate;
+
 	struct timeutils t_feedforward;
 	struct timeutils t_back_pass;
 	struct timeutils t_backpropagation;
 
 };
-
-/*
-void setting(struct network *net, void *threads, void* modes, int maxthreads);
-void init(struct network *net, char *conf_str);
-void reader(struct network *net);
-void train(struct network *net, void *threads , void *modes);
-int predict(struct network *net);
-void report(struct network *net, void *threads, void * modes);
-*/
