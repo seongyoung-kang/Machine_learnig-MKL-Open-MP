@@ -149,7 +149,7 @@ void train(struct network *net)
 		recog = predict(net);
 		if(recog > net->best_recog)
 			net->best_recog = recog;
-		printf("result  %d / %d n", recog, net->nr_test_data);
+		printf("result  %d / %d \n", recog, net->nr_test_data);
 }
 
 //feedforward 함수는 쓰래드 갯수에 심각한 영향을 받아서 수정요망.
@@ -164,7 +164,7 @@ void feedforward(struct network *net)
     sum = 0.0;
     int nr_chunk = net->thread[0];
     int chunk_size = (int) (net->mini_batch_size/nr_chunk); //mini_batch size를 쓰래드 갯수만큼  나눈것
-if(net->mode[1])
+if(net->mode[0])
 {	
 	for (i = 0; i < net->num_layer-1; i++)
 	{               
@@ -213,7 +213,7 @@ else
 }
 	END_TIME(t_feedforward);
 }
-//알수없지만 지금은 mkl이 인식률이 더 낮음.
+
 void back_pass(struct network *net)
 {
 	int i, j, k, l;
@@ -222,7 +222,7 @@ void back_pass(struct network *net)
 
 	START_TIME(t_back_pass);
 
-if(1)
+if(net->mode[1])
 {
 // calculate delta
 #pragma omp parallel for num_threads(net->thread[1]) private(i, j) collapse(2)
@@ -296,7 +296,6 @@ else
 	END_TIME(t_back_pass);
 }
 
-//mkl이 이상하게 인식률이 훨씬 더 좋음.
 /* Operation like backpropagation */
 void backpropagation(struct network *net)
 {
@@ -321,7 +320,7 @@ void backpropagation(struct network *net)
 	}
 //update weight
 
-if(1)
+if(net->mode[2])
 {	
 	// update weight
 	for (i = 0; i < net->num_layer-1; i++) {
@@ -448,7 +447,7 @@ void report(struct network *net)
 	fprintf( f, "backpropagation thread1 : %d\n", thread[3]);
 	fprintf( f, "backpropagation thread2 : %d\n", thread[4]);
 	fprintf( f, "========================MODE========================\n");
-	fprintf( f, "feedforward mode (error) : %s\n", modeid[0]);
+	fprintf( f, "feedforward mode : %s\n", modeid[0]);
 	fprintf( f, "back_pass mode : %s\n", modeid[mode[1]]);
 	fprintf( f, "backpropagation mode : %s\n", modeid[mode[2]]);
 	fprintf( f, "========================TIME========================\n");
@@ -462,56 +461,21 @@ void report(struct network *net)
 	fprintf( f, "total : %ld.%d sec\n", TOTAL_SEC_TIME(total), TOTAL_SEC_UTIME(total));
 
 }
-
+/*
 void settingmode(struct network * net)
 {
 	int i,j,k;
-	FILE * read = fopen( MODE_RECORD , "r");
-	FILE * write = fopen( MODE_RECORD , "w");
-	printf("setting mode is runnig \n");
-
-	int temp;
-
-	if(SELECT_MODE)
+	
+	FILE * write =fopen(MODE_RECORD,"w");
+	FILE * read =fopen(MODE_RE
+	for(i=0;i<2;i++)
 	{
-		fscanf(read,"%d",&temp);
-		if(temp != MODE_NUM)
+		for(j=0;j<MODE_NUM;j++)
 		{
-			printf("not collect data \n");
-			return
+			net->mode[j] = i;
 		}
-		
-		fscanf(read,"%d",&temp);
-		if(temp != THREAD_MODE_NUM)
-		{
-			printf("not collect data \n");
-			return
-		}
-		else
-		{
-			for(i=0;i<MODE_NUM;i++)
-				{
-					fscanf(read,"%d",&temp);
-					net->mode[i] = temp; 
-				}
 
-			for(i=0;i<THREAD_MODE_NUM;i++)
-				{
-					fscanf(read,"%d",&temp);
-					net->thread[i] = temp; 
-				}
-		}
-	}
-	else
-	{
-		for(i=0;i<2;i++)
-		{
-			for(j=1;j<MAX_CPU;j++)
-			{
-				for(k=0;k<THREAD_MODE_NUM;k++)
-					net->thread[k] = j;
-
-			}	
-		}
 	}
 }
+*/
+

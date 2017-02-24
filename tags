@@ -4,71 +4,75 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-AC_NEURONS	network_definition.h	18;"	d
-AC_WEIGHTS	network_definition.h	19;"	d
+AC_NEURONS	network_definition.h	22;"	d
+AC_WEIGHTS	network_definition.h	23;"	d
 BIAS	network_definition.h	/^enum DATA_T {BIAS, WEIGHT, ERROR, ZS, NEURON};$/;"	e	enum:DATA_T
-BIAS	network_definition.h	21;"	d
+BIAS	network_definition.h	25;"	d
 DATA_T	network_definition.h	/^enum DATA_T {BIAS, WEIGHT, ERROR, ZS, NEURON};$/;"	g
-DATA_TEST_A	network_definition.h	36;"	d
-DATA_TEST_Q	network_definition.h	35;"	d
-DATA_TRAIN_A	network_definition.h	34;"	d
-DATA_TRAIN_Q	network_definition.h	33;"	d
+DATA_TEST_A	network_definition.h	42;"	d
+DATA_TEST_Q	network_definition.h	41;"	d
+DATA_TRAIN_A	network_definition.h	40;"	d
+DATA_TRAIN_Q	network_definition.h	39;"	d
 END_TIME	timeutils.h	14;"	d
 EPOCH	network_definition.h	2;"	d
 ERROR	network_definition.h	/^enum DATA_T {BIAS, WEIGHT, ERROR, ZS, NEURON};$/;"	e	enum:DATA_T
-ERROR	network_definition.h	30;"	d
-HIDDEN_SIZE	network_definition.h	8;"	d
+ERROR	network_definition.h	36;"	d
+HIDDEN_SIZE	network_definition.h	12;"	d
 INPUT_SIZE	mnist.h	1;"	d
 LEARNING_RATE	network_definition.h	4;"	d
-MAX_CPU	network_definition.h	16;"	d
+MAX_CPU	network_definition.h	20;"	d
 MINI_BATCH_SIZE	network_definition.h	3;"	d
-MODE_NUM	network_definition.h	10;"	d
+MODE_NUM	network_definition.h	14;"	d
+MODE_RECORD	network_definition.h	7;"	d
 NEURON	network_definition.h	/^enum DATA_T {BIAS, WEIGHT, ERROR, ZS, NEURON};$/;"	e	enum:DATA_T
-NEURON	network_definition.h	26;"	d
-NUM_LAYER	network_definition.h	7;"	d
+NEURON	network_definition.h	32;"	d
+NUM_LAYER	network_definition.h	11;"	d
 OUTPUT_SIZE	mnist.h	2;"	d
 REPORT_F	network_definition.h	5;"	d
+SELECT_MODE	network_definition.h	9;"	d
 START_TIME	timeutils.h	13;"	d
 TEST_A	mnist.h	10;"	d
 TEST_DATA_NUM	mnist.h	5;"	d
 TEST_Q	mnist.h	9;"	d
-THREAD_MODE_NUM	network_definition.h	11;"	d
+THREAD_MODE_NUM	network_definition.h	15;"	d
 TIMER_ADD	timeutils.h	23;"	d
 TIMER_INIT	timeutils.h	5;"	d
-TOTAL_NEURONS	network_definition.h	13;"	d
+TOTAL_NEURONS	network_definition.h	17;"	d
 TOTAL_SEC_TIME	timeutils.h	20;"	d
 TOTAL_SEC_UTIME	timeutils.h	21;"	d
-TOTAL_WEIGHTS	network_definition.h	14;"	d
+TOTAL_WEIGHTS	network_definition.h	18;"	d
 TRAIN_A	mnist.h	8;"	d
 TRAIN_DATA_NUM	mnist.h	4;"	d
 TRAIN_Q	mnist.h	7;"	d
 WEIGHT	network_definition.h	/^enum DATA_T {BIAS, WEIGHT, ERROR, ZS, NEURON};$/;"	e	enum:DATA_T
-WEIGHT	network_definition.h	22;"	d
-WHILE	network_definition.h	38;"	d
+WEIGHT	network_definition.h	27;"	d
+WHILE	network_definition.h	44;"	d
 ZS	network_definition.h	/^enum DATA_T {BIAS, WEIGHT, ERROR, ZS, NEURON};$/;"	e	enum:DATA_T
-ZS	network_definition.h	28;"	d
+ZS	network_definition.h	34;"	d
 ac_neuron	network_definition.h	/^	int *ac_neuron;$/;"	m	struct:network
 ac_weight	network_definition.h	/^	int *ac_weight;$/;"	m	struct:network
 back_pass	machinelearning_function.h	/^void back_pass(struct network *net)$/;"	f
 backpropagation	machinelearning_function.h	/^void backpropagation(struct network *net)$/;"	f
 best_recog	network_definition.h	/^	int best_recog;$/;"	m	struct:network
 bias	network_definition.h	/^	double *bias;$/;"	m	struct:network
-calloc	network_definition.h	42;"	d
-calloc	network_definition.h	46;"	d
+calloc	network_definition.h	48;"	d
+calloc	network_definition.h	52;"	d
+cost_rate	network_definition.h	/^	double cost_rate;$/;"	m	struct:network
+cost_report	machinelearning_function.h	/^void cost_report(struct network * net )$/;"	f
 diff	timeutils.h	/^		struct timeval diff;$/;"	m	struct:timeutils	typeref:struct:timeutils::timeval
 epoch	network_definition.h	/^	int epoch;$/;"	m	struct:network
 error	network_definition.h	/^	double *error;$/;"	m	struct:network
 etime	timeutils.h	/^		struct timeval etime;$/;"	m	struct:timeutils	typeref:struct:timeutils::timeval
 feedforward	machinelearning_function.h	/^void feedforward(struct network *net)$/;"	f
-free	network_definition.h	43;"	d
-free	network_definition.h	47;"	d
+free	network_definition.h	49;"	d
+free	network_definition.h	53;"	d
 init	machinelearning_function.h	/^void init(struct network *net)$/;"	f
 layer_size	network_definition.h	/^	int *layer_size;$/;"	m	struct:network
 layersize	machinelearning_function.h	/^int layersize[NUM_LAYER] = {INPUT_SIZE,HIDDEN_SIZE,OUTPUT_SIZE};$/;"	v
 learning_rate	network_definition.h	/^	double learning_rate;$/;"	m	struct:network
 main	main.c	/^int main(void)$/;"	f
-malloc	network_definition.h	41;"	d
-malloc	network_definition.h	45;"	d
+malloc	network_definition.h	47;"	d
+malloc	network_definition.h	51;"	d
 mini_batch_size	network_definition.h	/^	int mini_batch_size;$/;"	m	struct:network
 mnist_load	mnist.h	/^void mnist_load(struct network * net)$/;"	f
 mode	network_definition.h	/^	int *mode;$/;"	m	struct:network
@@ -80,6 +84,8 @@ nr_train_data	network_definition.h	/^	unsigned int nr_train_data;$/;"	m	struct:n
 num_layer	network_definition.h	/^	int num_layer;$/;"	m	struct:network
 predict	machinelearning_function.h	/^int predict(struct network *net)$/;"	f
 randn	machinelearning_function.h	/^double randn(void)$/;"	f
+record_random	network_definition.h	/^	int *record_random;$/;"	m	struct:network
+report	machinelearning_function.h	/^void report(struct network *net)$/;"	f
 report_file	network_definition.h	/^	char *report_file;$/;"	m	struct:network
 sigmoid	machinelearning_function.h	/^double sigmoid(double z)$/;"	f
 sigmoid_prime	machinelearning_function.h	/^double sigmoid_prime(double z)$/;"	f

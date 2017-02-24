@@ -29,6 +29,8 @@ int main(void)
 	train(net);
 
     report(net);
+
+	free(net);
 	return 0;
 
 }
