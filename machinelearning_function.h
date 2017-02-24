@@ -447,7 +447,7 @@ void report(struct network *net)
 	fprintf( f, "backpropagation thread1 : %d\n", thread[3]);
 	fprintf( f, "backpropagation thread2 : %d\n", thread[4]);
 	fprintf( f, "========================MODE========================\n");
-	fprintf( f, "feedforward mode : %s\n", modeid[0]);
+	fprintf( f, "feedforward mode : %s\n", modeid[mode[0]]);
 	fprintf( f, "back_pass mode : %s\n", modeid[mode[1]]);
 	fprintf( f, "backpropagation mode : %s\n", modeid[mode[2]]);
 	fprintf( f, "========================TIME========================\n");

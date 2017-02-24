@@ -27,10 +27,8 @@ int main(void)
 				   전부 원하는 input 데이터로 가득 차있게 만드 십시오.*/
 
 	train(net);
-
     report(net);
 
 	free(net);
 	return 0;
-
 }

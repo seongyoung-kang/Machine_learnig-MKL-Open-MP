@@ -338,23 +338,3 @@ feedforward : 5.215179 sec
 back_pass : 0.212119 sec
 backpropagation : 8.417909 sec
 total : 13.845207 sec
-
-=======================REPORT=======================
-epoch : 5
-learning_rate : 3.000000
-recognization rate : 9302/10000
-=======================THREADS======================
-feedforward thread : 100
-back_pass thread1 : 100
-back_pass thread2 : 100
-backpropagation thread1 : 100
-backpropagation thread2 : 100
-========================MODE========================
-feedforward mode : OpenMP
-back_pass mode : OpenMP
-backpropagation mode : OpenMP
-========================TIME========================
-feedforward : 5.573219 sec
-back_pass : 0.220273 sec
-backpropagation : 9.602273 sec
-total : 15.395765 sec
