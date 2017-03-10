@@ -18,7 +18,6 @@ int main(void)
 	struct network * net;
 	
 	net = (struct network *) malloc(sizeof(struct network));//network 를 할당 합니다.
-	//printf("%lf \n\n",sigmoid(41.3));
 	init(net);
 	mnist_load(net);/* reader 함수는 철저하게 mnist 를 중심으로 짜여있는 code입니다. 
 				   다른 data set을 원하시면 함수를 새로 만들어 그 함수가 실행 뒤엔

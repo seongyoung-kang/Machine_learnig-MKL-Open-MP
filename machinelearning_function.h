@@ -68,11 +68,12 @@ void init(struct network *net)
 
 	//init mode & thread
 	for(i=0;i<THREAD_MODE_NUM;i++)
-		net->thread[i] =100;
+		net->thread[i] =120;
 	
 	for(i=0;i<MODE_NUM;i++)
-		net->mode[i] =1;
-
+	{	net->mode[i] =0;
+		if(i==1)net->mode[i] = 1;
+	}
 	for (i = 0; i < net->num_layer; i++) {
 		net->ac_neuron[i] = net->layer_size[i] + before_ac_neurals;//ac_neuron은 여태 누적한 neuron갯수..
 		before_ac_neurals = net->ac_neuron[i];
@@ -152,7 +153,6 @@ void train(struct network *net)
 		printf("result  %d / %d \n", recog, net->nr_test_data);
 }
 
-//feedforward 함수는 쓰래드 갯수에 심각한 영향을 받아서 수정요망.
 void feedforward(struct network *net)
 {
 	int i, j, k, l, m;
@@ -162,13 +162,11 @@ void feedforward(struct network *net)
 	// feedforward
 	START_TIME(t_feedforward);
     sum = 0.0;
-    int nr_chunk = net->thread[0];
-    int chunk_size = (int) (net->mini_batch_size/nr_chunk); //mini_batch size를 쓰래드 갯수만큼  나눈것
 if(net->mode[0])
 {	
 	for (i = 0; i < net->num_layer-1; i++)
 	{               
-#pragma omp parallel for num_threads(net->thread[0]) private(j, k, l) collapse(2)
+		#pragma omp parallel for num_threads(net->thread[0]) private(j, k, l) reduction(+:sum) collapse(2)
 		for(j=0;j<net->mini_batch_size;j++)
 		{
 			for (k = 0; k < net->layer_size[i+1]; k++)
@@ -192,24 +190,14 @@ else
 	{
         cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, net->mini_batch_size, net->layer_size[i+1], net->layer_size[i], 1.0, (const double *)&NEURON(net, i, 0, 0),net->layer_size[i], (const double *)&WEIGHT(net, i, 0, 0), net->layer_size[i+1], 0.0,&NEURON(net, i+1, 0, 0), net->layer_size[i+1]); //weight 와 입력값을 곱해서 배열에 저장합니다.
 
-        tmp      =(double *) malloc(sizeof(double) * net->mini_batch_size);
-        tmp_bias = (double *)malloc(sizeof(double) * net->layer_size[i+1] * net->mini_batch_size);
-        
-		#pragma omp parallel for num_threads(net->thread[0]) 
-		for (j = 0; j < net->mini_batch_size; j++)
-            tmp[j] = 1.0;
-
-        cblas_dger(CblasRowMajor, net->mini_batch_size, net->layer_size[i+1],
-                        1.0, (const double *)tmp, 1, (const double *)&BIAS(net, i, 0),
-                        1, tmp_bias, net->layer_size[i+1]); // tmp 라는 임시 배열을 만들어서 백터 두개를 합쳐서 행렬로 만듭니다. 그리고 그것을 tmp_bias에 저장합니다
-
-        vdAdd(net->layer_size[i+1] * net->mini_batch_size, tmp_bias, &NEURON(net, i+1, 0, 0), &ZS(net, i+1, 0, 0)); //그리고 bias랑 값을 더한것을 zs에 저장합니다
-        
 		#pragma omp parallel for num_threads(net->thread[0]) 
 		for (j = 0; j < net->mini_batch_size; j++)
             for (k = 0; k < net->layer_size[i+1]; k++)
-                NEURON(net, i+1, j, k) = sigmoid(ZS(net, i+1, j, k)); //zs에  sigmoid를 취한 값을 그다음 뉴런에 저장합니다!!
-    }
+			{ 
+				ZS(net, i+1, j, k) = NEURON(net,i+1,j,k)+ BIAS(net,i+1,k);
+				NEURON(net, i+1, j, k) = sigmoid(ZS(net, i+1, j, k)); //zs에  sigmoid를 취한 값을 그다음 뉴런에 저장합니다!!
+			}
+	}
 }
 	END_TIME(t_feedforward);
 }
@@ -217,6 +205,7 @@ else
 void back_pass(struct network *net)
 {
 	int i, j, k, l;
+    int nr_chunk = net->thread[0];
 	double sum = 0.0;
     timeutils *t_back_pass = &net->t_back_pass;
 
