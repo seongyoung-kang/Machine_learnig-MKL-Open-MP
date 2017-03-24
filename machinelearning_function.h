@@ -68,7 +68,7 @@ void init(struct network *net)
 
 	//init mode & thread
 	for(i=0;i<THREAD_MODE_NUM;i++)
-		net->thread[i] =120;
+		net->thread[i] =64;
 	
 	for(i=0;i<MODE_NUM;i++)
 	{	net->mode[i] =0;
@@ -450,21 +450,3 @@ void report(struct network *net)
 	fprintf( f, "total : %ld.%d sec\n", TOTAL_SEC_TIME(total), TOTAL_SEC_UTIME(total));
 
 }
-/*
-void settingmode(struct network * net)
-{
-	int i,j,k;
-	
-	FILE * write =fopen(MODE_RECORD,"w");
-	FILE * read =fopen(MODE_RE
-	for(i=0;i<2;i++)
-	{
-		for(j=0;j<MODE_NUM;j++)
-		{
-			net->mode[j] = i;
-		}
-
-	}
-}
-*/
-
