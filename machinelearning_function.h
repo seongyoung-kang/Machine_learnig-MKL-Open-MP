@@ -68,7 +68,7 @@ void init(struct network *net)
 
 	//init mode & thread
 	for(i=0;i<THREAD_MODE_NUM;i++)
-		net->thread[i] =64;
+		net->thread[i] =THREAD_NUM;
 	
 	for(i=0;i<MODE_NUM;i++)
 	{	net->mode[i] =0;
@@ -214,7 +214,7 @@ void back_pass(struct network *net)
 if(net->mode[1])
 {
 // calculate delta
-#pragma omp parallel for num_threads(net->thread[1]) private(i, j) collapse(2)
+	#pragma omp parallel for num_threads(net->thread[1]) private(i, j) collapse(2)
 	for (i = 0; i < net->mini_batch_size; i++) {
 		for (j = 0; j < net->layer_size[net->num_layer-1]; j++) {
 			//	calculate delta in last output layer
@@ -226,7 +226,7 @@ if(net->mode[1])
 
 	sum = 0.0;
 	for (i = net->num_layer-2; i > 0; i--) {
-#pragma omp parallel for num_threads(net->thread[2]) private(j, k, l) reduction(+:sum) collapse(2)
+	#pragma omp parallel for num_threads(net->thread[2]) private(j, k, l) reduction(+:sum) collapse(2)
 		for (j = 0; j < net->mini_batch_size; j++) {
 			for (k = 0; k < net->layer_size[i]; k++) {
 				for (l = 0; l < net->layer_size[i+1]; l++) {
@@ -298,11 +298,13 @@ void backpropagation(struct network *net)
 	START_TIME(t_backpropagation);
 	
 	//update bias
-	for (i = 1; i < net->num_layer; i++) {
-#pragma omp parallel for num_threads(net->thread[3]) private(i, j, k) collapse(1)
-		for (j = 0; j < net->layer_size[i]; j++) {
-           #pragma omp simd
-			for (k = 0; k < net->mini_batch_size; k++) {
+	for (i = 1; i < net->num_layer; i++) 
+	{
+	#pragma omp parallel for num_threads(net->thread[3]) private(j, k, l)
+		for (j = 0; j < net->layer_size[i]; j++)
+		{
+			for (k = 0; k < net->mini_batch_size; k++) 
+			{
                 BIAS(net, i, j) -= (eta/mini)*ERROR(net, i, k, j);
 			}
 		}

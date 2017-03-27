@@ -1,8 +1,10 @@
 //size definition
-#define EPOCH 100
+#define EPOCH 40
 #define MINI_BATCH_SIZE 100
-#define LEARNING_RATE 3
+#define LEARNING_RATE 0.8
 #define REPORT_F "./result/dump"
+
+#define THREAD_NUM 64
 
 #define MODE_RECORD "./record/mode_record"
 
